@@ -2,4 +2,5 @@
     <string name="app_name">DogApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Texto de prueba</string>
+    <string name="dogapp">DogApp</string>
 </resources>

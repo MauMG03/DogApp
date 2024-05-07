@@ -35,9 +35,9 @@ class LoginFragment : Fragment() {
     }
 
     private fun controladores(){
-        binding.btnIniciar.setOnClickListener {
+        /*binding.btnIniciar.setOnClickListener {
             biometricAuth()
-        }
+        }*/
     }
 
     private fun biometricAuth(){
