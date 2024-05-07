@@ -35,28 +35,28 @@ class LoginFragment : Fragment() {
     }
 
     private fun controladores(){
-        /*binding.btnIniciar.setOnClickListener {
+        binding.lavFingerPrint.setOnClickListener {
             biometricAuth()
-        }*/
+        }
     }
 
     private fun biometricAuth(){
         val manager = BiometricManager.from(this.requireContext())
         when (manager.canAuthenticate(BIOMETRIC_STRONG)) {
             BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-                Toast.makeText(context,"Hardware no disponible",Toast.LENGTH_LONG).show()
+                //Toast.makeText(context,"Hardware no disponible",Toast.LENGTH_LONG).show()
             }
             BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-                Toast.makeText(context,"No HW disponible",Toast.LENGTH_LONG).show()
+                //Toast.makeText(context,"No HW disponible",Toast.LENGTH_LONG).show()
             }
             BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                Toast.makeText(context,"No configurado Huella",Toast.LENGTH_LONG).show()
+                //Toast.makeText(context,"No configurado Huella",Toast.LENGTH_LONG).show()
             }
             BiometricManager.BIOMETRIC_SUCCESS -> {
-                Toast.makeText(context,"Satisfactorio",Toast.LENGTH_LONG).show()
+                //Toast.makeText(context,"Satisfactorio",Toast.LENGTH_LONG).show()
             }
             else -> {
-                Toast.makeText(context,"Error fatal",Toast.LENGTH_LONG).show()
+                //Toast.makeText(context,"Error fatal",Toast.LENGTH_LONG).show()
             }
         }
 
@@ -64,7 +64,7 @@ class LoginFragment : Fragment() {
             .setTitle("Autenticacion con Biometría")
             .setDescription("Ingrese su huella digital")
             .setAllowedAuthenticators(BIOMETRIC_STRONG)
-            .setNegativeButtonText("CANCEL")
+            .setNegativeButtonText("Cancelar")
 
 
         val executor = ContextCompat.getMainExecutor(this.requireContext())
@@ -73,7 +73,7 @@ class LoginFragment : Fragment() {
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(context,errString,Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context,errString,Toast.LENGTH_LONG).show()
                 }
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
@@ -83,7 +83,7 @@ class LoginFragment : Fragment() {
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
-                    Toast.makeText(context,"autenticacion fallida",Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context,"autenticacion fallida",Toast.LENGTH_LONG).show()
                 }
             }
         )
