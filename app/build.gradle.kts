@@ -82,6 +82,9 @@ dependencies {
     //Boton flotante
     implementation ("com.getbase:floatingactionbutton:1.10.1")
 
+    //Autenticacion Biometrica
+    implementation("androidx.biometric:biometric:1.1.0")
+
 
     //Retrofit (Consumo de API's)
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
