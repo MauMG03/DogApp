@@ -85,6 +85,9 @@ dependencies {
     //Autenticacion Biometrica
     implementation("androidx.biometric:biometric:1.1.0")
 
+    //Lottie(animaciones)
+    implementation("com.airbnb.android:lottie:3.4.0")
+
 
     //Retrofit (Consumo de API's)
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
