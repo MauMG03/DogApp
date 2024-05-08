@@ -30,9 +30,8 @@
             android:id="@+id/image_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_foreground"
+            android:src="@mipmap/ic_dog_foreground"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginStart="16dp"/>
 
         <TextView
@@ -42,6 +41,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/image_logo"/>
 
     </RelativeLayout>
