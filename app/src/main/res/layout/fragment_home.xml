@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Header -->
-    <RelativeLayout
+    <data>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/header_background"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
 
-        <!-- Title: "Administrador de Citas" -->
-        <TextView
-            android:id="@+id/text_title"
-            android:layout_width="wrap_content"
+        <!-- Header -->
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Administrador\n de Citas"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:gravity="center_horizontal"
-            android:textSize="24sp" />
+            android:background="@drawable/header_background"
+            android:padding="16dp">
 
-        <!-- Logo with title "DogApp" -->
-        <ImageView
-            android:id="@+id/image_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_dog_foreground"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="16dp"/>
+            <!-- Title: "Administrador de Citas" -->
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Administrador\n de Citas"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:gravity="center_horizontal"
+                android:textSize="24sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DogApp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/image_logo"/>
+            <!-- Logo with title "DogApp" -->
+            <ImageView
+                android:id="@+id/image_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_dog_foreground"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp" />
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DogApp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/image_logo" />
 
-</LinearLayout>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/header"
+            tools:listitem="@layout/date_item"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+</layout>
