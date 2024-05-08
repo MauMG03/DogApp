@@ -5,56 +5,89 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
+import androidx.biometric.BiometricPrompt
+import androidx.biometric.BiometricPrompt.PromptInfo
+import androidx.core.content.ContextCompat
 import com.example.dogapp.R
+import com.example.dogapp.databinding.FragmentLoginBinding
 
 // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        binding = FragmentLoginBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        controladores()
+    }
+
+    private fun controladores(){
+        binding.lavFingerPrint.setOnClickListener {
+            biometricAuth()
+        }
+    }
+
+    private fun biometricAuth(){
+        val manager = BiometricManager.from(this.requireContext())
+        when (manager.canAuthenticate(BIOMETRIC_STRONG)) {
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
+                //Toast.makeText(context,"Hardware no disponible",Toast.LENGTH_LONG).show()
+            }
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
+                //Toast.makeText(context,"No HW disponible",Toast.LENGTH_LONG).show()
+            }
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+                //Toast.makeText(context,"No configurado Huella",Toast.LENGTH_LONG).show()
+            }
+            BiometricManager.BIOMETRIC_SUCCESS -> {
+                //Toast.makeText(context,"Satisfactorio",Toast.LENGTH_LONG).show()
+            }
+            else -> {
+                //Toast.makeText(context,"Error fatal",Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val promptInfo = PromptInfo.Builder()
+            .setTitle("Autenticacion con Biometría")
+            .setDescription("Ingrese su huella digital")
+            .setAllowedAuthenticators(BIOMETRIC_STRONG)
+            .setNegativeButtonText("Cancelar")
+
+
+        val executor = ContextCompat.getMainExecutor(this.requireContext())
+        val prompt = BiometricPrompt (
+            this, executor,
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    //Toast.makeText(context,errString,Toast.LENGTH_LONG).show()
+                }
+
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    Toast.makeText(context,"Autenticacion exitosa",Toast.LENGTH_LONG).show()
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+                    //Toast.makeText(context,"autenticacion fallida",Toast.LENGTH_LONG).show()
                 }
             }
+        )
+
+        prompt.authenticate(promptInfo.build())
     }
 }
