@@ -3,4 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Texto de prueba</string>
     <string name="dogapp">DogApp</string>
+    <string name="nueva_cita">Nueva Cita</string>
+    <string name="nombre_de_la_mascota">Nombre de la mascota</string>
 </resources>
