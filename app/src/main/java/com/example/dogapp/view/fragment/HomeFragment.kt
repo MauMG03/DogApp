@@ -7,26 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dogapp.R
 import com.example.dogapp.databinding.FragmentHomeBinding
 import com.example.dogapp.view.adapter.DatesAdapter
 import com.example.dogapp.view.model.Date
+import com.example.dogapp.view.viewmodel.DatesViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-
+    private val datesViewModel: DatesViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,17 +42,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun observerDates() {
-        val datesList: MutableList<Date> = mutableListOf(
-            Date(1, "Max", "Fiebre", "imagen1.jpg"),
-            Date(2, "Bella", "Vómitos", "imagen2.jpg"),
-            Date(3, "Charlie", "Diarrea", "imagen3.jpg")
-        )
-
-        val recycler = binding.recyclerview
-        val layoutManager = LinearLayoutManager(context)
-        recycler.layoutManager = layoutManager
-        val adapter = DatesAdapter(datesList, findNavController())
-        recycler.adapter = adapter
-        adapter.notifyDataSetChanged()
+        datesViewModel.getDates()
+        datesViewModel.dates.observe(viewLifecycleOwner){dates ->
+            val recycler = binding.recyclerview
+            val layoutManager = LinearLayoutManager(context)
+            recycler.layoutManager = layoutManager
+            val adapter = DatesAdapter(dates, findNavController())
+            recycler.adapter = adapter
+            adapter.notifyDataSetChanged()
+        }
     }
 }
