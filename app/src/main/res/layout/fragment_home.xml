@@ -6,11 +6,10 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        android:orientation="vertical">
+        android:background="#FFFFFF">
 
         <!-- Header -->
         <RelativeLayout
@@ -53,6 +52,7 @@
 
         </RelativeLayout>
 
+        <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
@@ -61,5 +61,19 @@
             tools:listitem="@layout/date_item"
             android:padding="10dp"/>
 
-    </LinearLayout>
+        <!-- FloatingActionButton -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#F05861"
+            android:src="@drawable/baseline_add_24" />
+
+    </RelativeLayout>
 </layout>

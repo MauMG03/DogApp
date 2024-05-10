@@ -31,7 +31,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        controllers()
         observerDates()
+    }
+
+    private fun controllers() {
+        binding.addButton.setOnClickListener{
+            Toast.makeText(context, "navigate to add appoiment", Toast.LENGTH_SHORT).show()
+            //findNavController().navigate()
+        }
     }
 
     override fun onResume() {
