@@ -1,6 +1,10 @@
 package model
 
+import com.google.gson.annotations.SerializedName
+
 data class BreedResponse(
-val message: Map<String, List<String>>,
-val status: String
+    @SerializedName("message")
+    val message: Map<String, List<String>>,
+    @SerializedName("status")
+    val status: String
 )
