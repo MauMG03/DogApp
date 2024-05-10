@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,25 +10,34 @@
         android:id="@+id/dateItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="10dp"
         android:background="@drawable/date_item_background"
         android:elevation="4dp"
         android:layout_margin="8dp">
 
         <!-- Imagen circular de la mascota -->
-        <ImageView
-            android:id="@+id/imagePet"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:background="@drawable/circle_background"
-            android:layout_marginEnd="16dp"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imagePetCard"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            app:cardCornerRadius="250dp"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/imagePet"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_dog_foreground"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
 
         <!-- Contenedor vertical para el nombre, descripción y turno -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imagePet"
-            android:orientation="vertical">
+            android:layout_toEndOf="@id/imagePetCard"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <!-- Nombre de la mascota -->
             <TextView
