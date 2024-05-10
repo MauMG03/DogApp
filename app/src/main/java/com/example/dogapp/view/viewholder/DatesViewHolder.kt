@@ -16,7 +16,7 @@ class DatesViewHolder(binding: DateItemBinding, navController: NavController) :
     fun setDateItem(date: Date) {
         bindingItem.petName.text = date.petName
         bindingItem.symptom.text = date.symptom
-        bindingItem.id.text = "# ${date.id}
+        bindingItem.id.text = "# ${date.id}"
         Glide.with(bindingItem.root.context).load(date.petImage).into(bindingItem.imagePet)
 
         bindingItem.dateItem.setOnClickListener {
