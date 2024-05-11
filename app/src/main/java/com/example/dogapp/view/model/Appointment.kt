@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 @Entity
-data class Date(
+data class Appointment(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val petName: String,

@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/header"
-            tools:listitem="@layout/date_item"
+            tools:listitem="@layout/appointment_item"
             android:padding="10dp"/>
 
         <!-- FloatingActionButton -->

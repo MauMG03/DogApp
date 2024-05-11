@@ -5,24 +5,24 @@ import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.dogapp.databinding.DateItemBinding
-import com.example.dogapp.view.model.Date
+import com.example.dogapp.databinding.AppointmentItemBinding
+import com.example.dogapp.view.model.Appointment
 
-class DatesViewHolder(binding: DateItemBinding, navController: NavController) :
+class AppointmentsViewHolder(binding: AppointmentItemBinding, navController: NavController) :
     RecyclerView.ViewHolder(binding.root){
     val bindingItem = binding
     val navController = navController
 
-    fun setDateItem(date: Date) {
-        bindingItem.petName.text = date.petName
-        bindingItem.symptom.text = date.symptom
-        bindingItem.id.text = "# ${date.id}"
-        Glide.with(bindingItem.root.context).load(date.petImage).into(bindingItem.imagePet)
+    fun setDateItem(appointment: Appointment) {
+        bindingItem.petName.text = appointment.petName
+        bindingItem.symptom.text = appointment.symptom
+        bindingItem.id.text = "# ${appointment.id}"
+        Glide.with(bindingItem.root.context).load(appointment.petImage).into(bindingItem.imagePet)
 
         bindingItem.dateItem.setOnClickListener {
             Toast.makeText(bindingItem.root.context, "Navigate to appoiment details", Toast.LENGTH_SHORT).show()
             val bundle = Bundle()
-            bundle.putSerializable("date", date)
+            bundle.putSerializable("appointment", appointment)
             //navController.navigate(tofargment, bundle)
         }
     }
