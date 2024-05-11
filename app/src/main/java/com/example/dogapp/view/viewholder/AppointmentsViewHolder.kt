@@ -6,14 +6,14 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.dogapp.databinding.AppointmentItemBinding
-import com.example.dogapp.view.model.Appointment
+import model.Appointment
 
 class AppointmentsViewHolder(binding: AppointmentItemBinding, navController: NavController) :
     RecyclerView.ViewHolder(binding.root){
     val bindingItem = binding
     val navController = navController
 
-    fun setDateItem(appointment: Appointment) {
+    fun setAppointmentItem(appointment: Appointment) {
         bindingItem.petName.text = appointment.petName
         bindingItem.symptom.text = appointment.symptom
         bindingItem.id.text = "# ${appointment.id}"

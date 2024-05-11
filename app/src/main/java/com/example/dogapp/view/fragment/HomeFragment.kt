@@ -12,12 +12,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dogapp.databinding.FragmentHomeBinding
 import com.example.dogapp.view.adapter.AppointmentsAdapter
-import com.example.dogapp.view.viewmodel.AppointmentsViewModel
-
+import viewmodel.AppointmentViewModel
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private val appointmentsViewModel: AppointmentsViewModel by viewModels()
+    private val appointmentsViewModel: AppointmentViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
