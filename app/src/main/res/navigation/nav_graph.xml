@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/createAppointmentFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.dogapp.view.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/createAppointmentFragment"
+        android:name="com.example.dogapp.view.fragment.CreateAppointmentFragment"
+        android:label="fragment_create_appointment"
+        tools:layout="@layout/fragment_create_appointment" />
 </navigation>
