@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.dogapp.R
 import com.example.dogapp.databinding.FragmentCreateAppointmentBinding
+import com.example.dogapp.view.adapter.SymptomAdapter
+import com.example.dogapp.view.adapter.breedsAdapter
 import viewmodel.AppointmentViewModel
 import kotlin.math.log
 
@@ -30,6 +32,7 @@ class CreateAppointmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         obeserverViewModel()
+        observeSymptoms()
     }
 
     private fun obeserverViewModel(){
@@ -40,6 +43,18 @@ class CreateAppointmentFragment : Fragment() {
         appointmentViewModel.getBreeds()
         appointmentViewModel.breeds.observe(viewLifecycleOwner) { breeds ->
             Log.d("BREEDS", breeds.toString())
+            val breedsAdapter = breedsAdapter(requireContext(), breeds)
+            binding.actvBreed.setAdapter(breedsAdapter)
+            binding.actvBreed.threshold = 2
+        }
+    }
+
+    private fun observeSymptoms(){
+        appointmentViewModel.getSymptoms()
+        appointmentViewModel.symptoms.observe(viewLifecycleOwner) { symptoms ->
+            Log.d("SYMPTOMS", symptoms.toString())
+            val symptomsAdapter = SymptomAdapter(requireContext(), symptoms)
+            binding.spSymptoms.setAdapter(symptomsAdapter)
         }
     }
     private fun controladores(){

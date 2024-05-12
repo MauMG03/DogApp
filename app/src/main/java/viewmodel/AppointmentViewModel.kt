@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import model.Breed
+import model.Symptom
 import repository.BreedsRepository
 
 class AppointmentViewModel(application: Application) :AndroidViewModel(application) {
@@ -20,6 +21,9 @@ class AppointmentViewModel(application: Application) :AndroidViewModel(applicati
     private val _breeds = MutableLiveData<MutableList<Breed>>()
     val breeds: LiveData<MutableList<Breed>> = _breeds
 
+    private val _symptoms = MutableLiveData<MutableList<Symptom>>()
+    val symptoms: LiveData<MutableList<Symptom>> = _symptoms
+
     fun getBreeds(){
         viewModelScope.launch {
             _progresState.value = true
@@ -30,6 +34,26 @@ class AppointmentViewModel(application: Application) :AndroidViewModel(applicati
                 _progresState.value = false
             }
         }
+    }
+
+    private var initialized = false
+    fun getSymptoms(): MutableLiveData<MutableList<Symptom>> {
+        if (!initialized){
+
+                val items = mutableListOf(
+                    Symptom("Sintomas"),
+                    Symptom("No come"),
+                    Symptom("Fractura extremidad"),
+                    Symptom("Tiene pulgas"),
+                    Symptom("Tiene garrapatas"),
+                    Symptom("Bota demasiado pelo"),
+                )
+                _symptoms.postValue(items)
+                initialized = true
+
+
+        }
+        return _symptoms
     }
 
 }
