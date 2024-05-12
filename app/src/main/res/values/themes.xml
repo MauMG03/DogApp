@@ -11,5 +11,8 @@
         <item name="android:colorControlNormal">@color/white</item>
         <item name="titleTextColor">@color/white</item>
     </style>
+    <style name="ButtonPink">
+        <item name="android:backgroundTint">@color/pink</item>
+    </style>
 
 </resources>

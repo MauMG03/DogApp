@@ -1,18 +1,17 @@
 package com.example.dogapp.view.fragment
 
 import android.os.Bundle
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.dogapp.R
 import com.example.dogapp.databinding.FragmentCreateAppointmentBinding
 import com.example.dogapp.view.adapter.SymptomAdapter
 import com.example.dogapp.view.adapter.breedsAdapter
 import viewmodel.AppointmentViewModel
-import kotlin.math.log
 
 
 class CreateAppointmentFragment : Fragment() {
@@ -31,12 +30,13 @@ class CreateAppointmentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        obeserverViewModel()
-        observeSymptoms()
+        observerViewModel()
+        controllers()
     }
 
-    private fun obeserverViewModel(){
+    private fun observerViewModel(){
         observeBreeds()
+        observeSymptoms()
     }
 
     private fun observeBreeds(){
@@ -57,7 +57,36 @@ class CreateAppointmentFragment : Fragment() {
             binding.spSymptoms.setAdapter(symptomsAdapter)
         }
     }
-    private fun controladores(){
-
+    private fun controllers(){
+        validateFields()
     }
+
+    private fun validateFields(){
+        binding.etPetName.addTextChangedListener(TextWatcher)
+        binding.actvBreed.addTextChangedListener(TextWatcher)
+        binding.etOwnerName.addTextChangedListener(TextWatcher)
+        binding.etPhone.addTextChangedListener(TextWatcher)
+
+        binding.btnSaveAppointment.isEnabled = areFieldsFilled()
+    }
+    fun areFieldsFilled(): Boolean {
+        val petName = binding.etPetName.text ?: ""
+        val breed = binding.actvBreed.text ?: ""
+        val ownerName = binding.etOwnerName.text ?: ""
+        val phone = binding.etPhone.text ?: ""
+        return petName.isNotEmpty() && breed.isNotEmpty() && ownerName.isNotEmpty() && phone.isNotEmpty()
+    }
+
+    private val TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        }
+
+        override fun afterTextChanged(s: android.text.Editable?) {
+            binding.btnSaveAppointment.isEnabled = areFieldsFilled()
+        }
+    }
+
 }

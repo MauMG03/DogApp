@@ -134,11 +134,14 @@
             android:padding="20dp"/>
 
         <Button
+            android:id="@+id/btnSaveAppointment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/guardar_cita"
             android:layout_gravity="center"
-
+            app:icon="@drawable/ic_save"
+            style="@style/ButtonPink"
+            android:enabled="false"
             />
 
 
