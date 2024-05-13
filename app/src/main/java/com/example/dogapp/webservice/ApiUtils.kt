@@ -5,5 +5,7 @@ class ApiUtils {
         fun getApiService(): ApiService {
             return RetrofitClient.getRetrofit().create(ApiService::class.java)
         }
+
+
     }
 }

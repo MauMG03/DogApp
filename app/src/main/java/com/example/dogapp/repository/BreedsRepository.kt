@@ -1,6 +1,7 @@
 package com.example.dogapp.repository
 
 import android.content.Context
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.example.dogapp.model.Breed
@@ -25,4 +26,19 @@ class BreedsRepository(val context:Context) {
             }
         }
     }
+
+    suspend fun getImage(breed: String): String{
+            return withContext(Dispatchers.IO){
+                try {
+                    val response = apiService.getImage(breed)
+                    Log.d("RESPONSE", response.message)
+                    response.message
+                } catch (e: Exception){
+                    e.printStackTrace()
+                    ""
+                }
+            }
+        }
+
+
 }

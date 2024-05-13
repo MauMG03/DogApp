@@ -86,11 +86,10 @@
             android:padding="20dp"
             android:hint="@string/raza">
 
-            <AutoCompleteTextView
+            <com.example.dogapp.view.fragment.CustomAutoCompleteTextView
                 android:layout_width="match_parent"
                 android:id="@+id/actvBreed"
                 android:layout_height="wrap_content"
-                android:completionThreshold="2"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

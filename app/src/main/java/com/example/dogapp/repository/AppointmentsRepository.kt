@@ -15,4 +15,10 @@ class AppointmentsRepository(val context: Context) {
             appointmentsDao.getAppointments()
         }
     }
+
+    suspend fun insertAppointment(appointment: Appointment) {
+        withContext(Dispatchers.IO) {
+            appointmentsDao.insertAppointment(appointment)
+        }
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.dogapp.data
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.dogapp.model.Appointment
 
@@ -8,4 +10,7 @@ import com.example.dogapp.model.Appointment
 interface AppointmentsDao {
     @Query("SELECT * FROM Appointment")
     suspend fun getAppointments(): MutableList<Appointment>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAppointment(appointment: Appointment)
 }

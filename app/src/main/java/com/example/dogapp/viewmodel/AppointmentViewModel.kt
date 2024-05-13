@@ -42,6 +42,20 @@ class AppointmentViewModel(application: Application) :AndroidViewModel(applicati
         }
     }
 
+    private val _image = MutableLiveData<String>()
+    val image: LiveData<String> = _image
+    fun getImage(breed: String) {
+        viewModelScope.launch {
+            _progresState.value = true
+            try {
+                _image.value = breedsRepository.getImage(breed)
+                _progresState.value = false
+            } catch (e: Exception) {
+                _progresState.value = false
+            }
+        }
+    }
+
     private var initialized = false
     fun getSymptoms(): MutableLiveData<MutableList<Symptom>> {
         if (!initialized){
@@ -61,6 +75,18 @@ class AppointmentViewModel(application: Application) :AndroidViewModel(applicati
         }
         return _symptoms
     }
+
+    fun insertAppointment(appointment: Appointment) {
+    viewModelScope.launch {
+        _progresState.value = true
+        try {
+            appointmentsRepository.insertAppointment(appointment)
+            _progresState.value = false
+        } catch (e: Exception) {
+            _progresState.value = false
+        }
+    }
+}
 
     fun getAppointments() {
         viewModelScope.launch {

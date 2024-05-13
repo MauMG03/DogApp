@@ -5,6 +5,7 @@ import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -15,6 +16,7 @@ import com.example.dogapp.view.adapter.breedsAdapter
 import com.example.dogapp.viewmodel.AppointmentViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.example.dogapp.R
+import com.example.dogapp.model.Appointment
 
 
 class CreateAppointmentFragment : Fragment() {
@@ -49,6 +51,21 @@ class CreateAppointmentFragment : Fragment() {
             val breedsAdapter = breedsAdapter(requireContext(), breeds)
             binding.actvBreed.setAdapter(breedsAdapter)
             binding.actvBreed.threshold = 2
+
+            //I believe this disallow the show of the dropdown not sure how but this is bad probably better ways of doing this.
+            binding.actvBreed.setOnTouchListener { v, event ->
+                if (binding.actvBreed.isFocused && binding.actvBreed.text.isEmpty()) {
+                    v.parent.requestDisallowInterceptTouchEvent(true)
+                    if ((event.action and MotionEvent.ACTION_MASK) == MotionEvent.ACTION_UP) {
+                        v.parent.requestDisallowInterceptTouchEvent(false)
+                        v.performClick() // Call performClick when a click is detected
+                    }
+                    true
+                } else {
+                    false
+                }
+            }
+            //I hate this
         }
     }
 
@@ -61,11 +78,24 @@ class CreateAppointmentFragment : Fragment() {
         }
 
     }
+
+
     private fun controllers(){
         validateFields()
         binding.btnSaveAppointment.setOnClickListener {
             if (areFieldsFilled() && binding.spSymptoms.selectedItemPosition != 0 ) {
-                // Aquí va el código para guardar la cita
+                val petName = binding.etPetName.text.toString()
+                val breed = binding.actvBreed.text.toString()
+                val ownerName = binding.etOwnerName.text.toString()
+                val symptom = binding.spSymptoms.selectedItem.toString()
+                val phone = binding.etPhone.text.toString()
+                appointmentViewModel.getImage(breed)
+                appointmentViewModel.image.observe(viewLifecycleOwner) { image ->
+                    val appointment = Appointment(petName = petName, ownerName = ownerName, petBreed = breed, symptom = symptom, phone = phone, petImage = image)
+                    appointmentViewModel.insertAppointment(appointment)
+                    Log.d("APPOINTMENT", appointment.toString())
+                    findNavController().popBackStack()
+                }
             } else {
                 val selectedItem = binding.spSymptoms.selectedItem.toString()
                 if (selectedItem == "Sintomas") {
