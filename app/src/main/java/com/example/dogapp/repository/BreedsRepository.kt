@@ -1,11 +1,11 @@
-package repository
+package com.example.dogapp.repository
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import model.Breed
-import webservice.ApiService
-import webservice.ApiUtils
+import com.example.dogapp.model.Breed
+import com.example.dogapp.webservice.ApiService
+import com.example.dogapp.webservice.ApiUtils
 
 class BreedsRepository(val context:Context) {
     private var apiService: ApiService = ApiUtils.getApiService()

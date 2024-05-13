@@ -1,4 +1,4 @@
-package utils
+package com.example.dogapp.utils
 
 object Constants {
     const val NAME_DB:String = "dogapp_data.db"

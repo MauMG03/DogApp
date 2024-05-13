@@ -1,11 +1,11 @@
-package repository
+package com.example.dogapp.repository
 
 import android.content.Context
-import data.AppointmentsDB
-import data.AppointmentsDao
+import com.example.dogapp.data.AppointmentsDB
+import com.example.dogapp.data.AppointmentsDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import model.Appointment
+import com.example.dogapp.model.Appointment
 
 class AppointmentsRepository(val context: Context) {
     private var appointmentsDao: AppointmentsDao = AppointmentsDB.getDatabase(context).appointmentsDao()

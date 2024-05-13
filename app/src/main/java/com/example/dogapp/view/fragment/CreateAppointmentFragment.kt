@@ -7,13 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dogapp.databinding.FragmentCreateAppointmentBinding
 import com.example.dogapp.view.adapter.SymptomAdapter
 import com.example.dogapp.view.adapter.breedsAdapter
-import viewmodel.AppointmentViewModel
+import com.example.dogapp.viewmodel.AppointmentViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.example.dogapp.R
 

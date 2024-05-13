@@ -15,11 +15,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 
 class LoginViewModel(application:Application) :AndroidViewModel(application) {
     val context = getApplication<Application>()
 
-    fun biometricAuth(fragment:Fragment){
+    fun biometricAuth(fragment:Fragment, navController: NavController, to:Int){
         val manager = BiometricManager.from(context)
         when (manager.canAuthenticate(BIOMETRIC_STRONG)) {
             BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
@@ -56,12 +57,12 @@ class LoginViewModel(application:Application) :AndroidViewModel(application) {
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
-                    Toast.makeText(context,"Autenticacion exitosa", Toast.LENGTH_LONG).show()
+                    navController.navigate(to)
                 }
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
-                    Toast.makeText(context,"Autenticacion Fallida",Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context,"Autenticacion Fallida",Toast.LENGTH_LONG).show()
                 }
             }
         )

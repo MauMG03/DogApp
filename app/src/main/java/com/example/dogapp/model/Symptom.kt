@@ -1,6 +1,6 @@
-package model
+package com.example.dogapp.model
 
-data class Breed(
+data class Symptom (
     val name: String
 ) {
     override fun toString(): String {

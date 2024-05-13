@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.dogapp.databinding.AppointmentItemBinding
-import model.Appointment
+import com.example.dogapp.model.Appointment
 
 class AppointmentsViewHolder(binding: AppointmentItemBinding, navController: NavController) :
     RecyclerView.ViewHolder(binding.root){

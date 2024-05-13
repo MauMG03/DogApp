@@ -1,4 +1,4 @@
-package viewmodel
+package com.example.dogapp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -6,11 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import model.Appointment
-import model.Breed
-import repository.AppointmentsRepository
-import model.Symptom
-import repository.BreedsRepository
+import com.example.dogapp.model.Appointment
+import com.example.dogapp.model.Breed
+import com.example.dogapp.repository.AppointmentsRepository
+import com.example.dogapp.model.Symptom
+import com.example.dogapp.repository.BreedsRepository
 
 class AppointmentViewModel(application: Application) :AndroidViewModel(application) {
     val context = getApplication<Application>()

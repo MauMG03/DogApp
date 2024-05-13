@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.dogapp.R
-import com.google.gson.internal.bind.ArrayTypeAdapter
-import model.Symptom
+import com.example.dogapp.model.Symptom
 
 class SymptomAdapter (
     context: Context,

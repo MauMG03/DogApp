@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dogapp.databinding.FragmentHomeBinding
 import com.example.dogapp.view.adapter.AppointmentsAdapter
-import viewmodel.AppointmentViewModel
+import com.example.dogapp.viewmodel.AppointmentViewModel
 import com.example.dogapp.R
 
 class HomeFragment : Fragment() {

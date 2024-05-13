@@ -1,8 +1,8 @@
-package data
+package com.example.dogapp.data
 
 import androidx.room.Dao
 import androidx.room.Query
-import model.Appointment
+import com.example.dogapp.model.Appointment
 
 @Dao
 interface AppointmentsDao {

@@ -13,6 +13,7 @@ import androidx.biometric.BiometricPrompt
 import androidx.biometric.BiometricPrompt.PromptInfo
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.dogapp.R
 import com.example.dogapp.databinding.FragmentLoginBinding
 import com.example.dogapp.viewmodel.LoginViewModel
@@ -44,6 +45,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun biometricAuth(){
-        loginViewModel.biometricAuth(this)
+        loginViewModel.biometricAuth(this,findNavController(),R.id.action_loginFragment_to_homeFragment)
     }
 }
