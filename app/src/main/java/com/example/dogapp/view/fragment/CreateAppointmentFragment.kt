@@ -9,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.dogapp.databinding.FragmentCreateAppointmentBinding
 import com.example.dogapp.view.adapter.SymptomAdapter
 import com.example.dogapp.view.adapter.breedsAdapter
 import viewmodel.AppointmentViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.example.dogapp.R
 
 
 class CreateAppointmentFragment : Fragment() {
@@ -71,6 +73,10 @@ class CreateAppointmentFragment : Fragment() {
                     Snackbar.make(binding.root, "Selecciona un síntoma", Snackbar.LENGTH_LONG).show()
                 }
             }
+        }
+
+        binding.ivBack.setOnClickListener{
+            findNavController().navigate(R.id.action_createAppointmentFragment_to_homeFragment)
         }
     }
 

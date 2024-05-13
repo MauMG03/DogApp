@@ -6,13 +6,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import model.Appointment
 import model.Breed
+import repository.AppointmentsRepository
 import model.Symptom
 import repository.BreedsRepository
 
 class AppointmentViewModel(application: Application) :AndroidViewModel(application) {
     val context = getApplication<Application>()
     private val breedsRepository = BreedsRepository(context)
+    private val appointmentsRepository = AppointmentsRepository(context)
+
+    private val _appointments = MutableLiveData<MutableList<Appointment>>()
+    val appointments: LiveData<MutableList<Appointment>> get() = _appointments
 
     private val _progresState = MutableLiveData(false)
     val progresState: LiveData<Boolean> = _progresState
@@ -54,6 +60,12 @@ class AppointmentViewModel(application: Application) :AndroidViewModel(applicati
 
         }
         return _symptoms
+    }
+
+    fun getAppointments() {
+        viewModelScope.launch {
+            _appointments.value = appointmentsRepository.getAppointments()
+        }
     }
 
 }
