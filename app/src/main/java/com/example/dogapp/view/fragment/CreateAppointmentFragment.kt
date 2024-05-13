@@ -7,11 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.viewModels
 import com.example.dogapp.databinding.FragmentCreateAppointmentBinding
 import com.example.dogapp.view.adapter.SymptomAdapter
 import com.example.dogapp.view.adapter.breedsAdapter
 import viewmodel.AppointmentViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class CreateAppointmentFragment : Fragment() {
@@ -56,9 +58,20 @@ class CreateAppointmentFragment : Fragment() {
             val symptomsAdapter = SymptomAdapter(requireContext(), symptoms)
             binding.spSymptoms.setAdapter(symptomsAdapter)
         }
+
     }
     private fun controllers(){
         validateFields()
+        binding.btnSaveAppointment.setOnClickListener {
+            if (areFieldsFilled() && binding.spSymptoms.selectedItemPosition != 0 ) {
+                // Aquí va el código para guardar la cita
+            } else {
+                val selectedItem = binding.spSymptoms.selectedItem.toString()
+                if (selectedItem == "Sintomas") {
+                    Snackbar.make(binding.root, "Selecciona un síntoma", Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     private fun validateFields(){
@@ -88,5 +101,7 @@ class CreateAppointmentFragment : Fragment() {
             binding.btnSaveAppointment.isEnabled = areFieldsFilled()
         }
     }
+
+
 
 }
