@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.dogapp.R
 import com.example.dogapp.databinding.FragmentAppointmentDetailsBinding
 import com.example.dogapp.model.Appointment
@@ -40,6 +41,7 @@ class AppointmentDetailsFragment : Fragment() {
         val receivedBundle = arguments
         receivedAppointment = receivedBundle?.getSerializable("appointment") as Appointment
         binding.tvTitle.text = "${receivedAppointment.petName}"
+        Glide.with(binding.root.context).load(receivedAppointment.petImage).into(binding.ivDog)
 
     }
 
