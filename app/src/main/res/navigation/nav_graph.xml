@@ -31,5 +31,17 @@
         <action
             android:id="@+id/action_homeFragment_to_createAppointmentFragment"
             app:destination="@id/createAppointmentFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_appointmentDetailsFragment"
+            app:destination="@id/appointmentDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentDetailsFragment"
+        android:name="com.example.dogapp.view.fragment.AppointmentDetailsFragment"
+        android:label="fragment_appointment_details"
+        tools:layout="@layout/fragment_appointment_details" >
+        <action
+            android:id="@+id/action_appointmentDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
