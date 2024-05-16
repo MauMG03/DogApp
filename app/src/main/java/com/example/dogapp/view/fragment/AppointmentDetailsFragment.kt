@@ -40,9 +40,13 @@ class AppointmentDetailsFragment : Fragment() {
     private fun dataInventory(){
         val receivedBundle = arguments
         receivedAppointment = receivedBundle?.getSerializable("appointment") as Appointment
-        binding.tvTitle.text = "${receivedAppointment.petName}"
         Glide.with(binding.root.context).load(receivedAppointment.petImage).into(binding.ivDog)
-
+        binding.tvName.text = "${receivedAppointment.petName}"
+        binding.tvId.text = "#${receivedAppointment.id}"
+        binding.tvBreed.text = "${receivedAppointment.petBreed}"
+        binding.tvSymptom.text = "${receivedAppointment.symptom}"
+        binding.tvOwner.text = "Propietario: ${receivedAppointment.ownerName}"
+        binding.tvPhone.text = "Teléfono: ${receivedAppointment.phone}"
     }
 
 }
