@@ -94,4 +94,16 @@ class AppointmentViewModel(application: Application) :AndroidViewModel(applicati
         }
     }
 
+    fun deleteAppointment(appointment: Appointment) {
+        viewModelScope.launch {
+            _progresState.value = true
+            try {
+                appointmentsRepository.deleteAppointment(appointment)
+                _progresState.value = false
+            } catch (e: Exception) {
+                _progresState.value = false
+            }
+        }
+    }
+
 }
