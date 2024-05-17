@@ -41,7 +41,9 @@ class AppointmentDetailsFragment : Fragment() {
         }
 
         binding.fabEdit.setOnClickListener{
-            //Insertar navegador al edit aquí
+            val bundle = Bundle()
+            bundle.putSerializable("dataAppointment", receivedAppointment)
+            findNavController().navigate(R.id.action_appointmentDetailsFragment_to_updateFragment, bundle)
         }
 
         binding.fabDelete.setOnClickListener{

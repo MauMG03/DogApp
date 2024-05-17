@@ -106,4 +106,16 @@ class AppointmentViewModel(application: Application) :AndroidViewModel(applicati
         }
     }
 
+    fun updateAppointment (appointment: Appointment){
+        viewModelScope.launch {
+            _progresState.value = true
+            try {
+                appointmentsRepository.updateAppointment(appointment)
+                _progresState.value = false
+            } catch (e: Exception) {
+                _progresState.value = false
+            }
+        }
+    }
+
 }

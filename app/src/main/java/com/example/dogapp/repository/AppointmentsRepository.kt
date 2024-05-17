@@ -27,4 +27,10 @@ class AppointmentsRepository(val context: Context) {
             appointmentsDao.deleteAppointment(appointment)
         }
     }
+
+    suspend fun updateAppointment(appointment: Appointment){
+        withContext(Dispatchers.IO){
+            appointmentsDao.updateAppointment(appointment)
+        }
+    }
 }
