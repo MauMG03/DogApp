@@ -65,7 +65,6 @@ class CreateAppointmentFragment : Fragment() {
                     false
                 }
             }
-            //I hate this
         }
     }
 
