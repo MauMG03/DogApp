@@ -82,6 +82,12 @@ dependencies {
     //Boton flotante
     implementation ("com.getbase:floatingactionbutton:1.10.1")
 
+    //Autenticacion Biometrica
+    implementation("androidx.biometric:biometric:1.1.0")
+
+    //Lottie(animaciones)
+    implementation("com.airbnb.android:lottie:3.4.0")
+
 
     //Retrofit (Consumo de API's)
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
@@ -89,4 +95,9 @@ dependencies {
 
     //Glide (Consumir imagenes API)
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+
+    //Toolbar
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+
 }
